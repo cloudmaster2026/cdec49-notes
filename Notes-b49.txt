@@ -1,17 +1,17 @@
      Git -> version control system which keep record of every changes performed by the user.
-         -> it works on local system/computer
+         -> it works on local system(Personal computer)/computer
          -> it work CLI mode
          -> Repository = A directory which got power to handle the git actions  $git init directory-name
          -> every git command uses git as a prefix of it
     
 
-      Git lifecycle :   working area       ->   staged area     ->    committed area {recorded}   
+      Git lifecycle :   working area       ->   staged area     ->    committed area {recorded, content saved 										      in git's memory}   
                         
-                        file editing	        Tracked file             commit
+                        file editing	        Tracked file             commit 
                         untracked file          $git add filename       $git commit -m "message"
                   $ git init 
                   $ git status 
-                  $ git add .
+                  $ git add <filename>   , $ git add .
                   $ git commit -m "message of ur choice"
                   $ git log             {to show commits}
                   $ git show <commit-id>
@@ -29,24 +29,46 @@
                                  Branching strategy
 
           To prevent you main or live branch to get disturb we you branching strategy.
-                 $ git branch
+                 $ git branch         {to list branches}
                  $ git branch  <branch-name>    {to create new branch}
-                 $ git checkout <branch-name>
+                 $ git checkout <branch-name>  
+                 $ git checkout -b <new-branch-name>  {to create and switch on new branch}
                  
          Do all modifications on your feature branch and then merge it to main
          
-                 $ git diff <feature-branch>
+                 $ git diff <feature-branch>      {it do comparison of current and other branch}
                  $ git merge <feature-branch>
+                 
+               
+           Task: stash, squash, rebase, cherry pick
+
+
                         
-                                GitHub
+                  
+                                        GitHub
 
      A web application (website) which help to centralise our code.
      Cetral/Remote repository
 
 
       Source Code Management Tool (SCM)
+   
+              $ git clone  <repo url>
+              $ git push remote-address <branch-name>
+              $ git remote -v
+              $ git remote add alias-name <address>    
 
+     Public Repository: A repo which will be visible to all the people on GitHub and they can read the content of 			this repo. PUll and clone. But only people you decide can change the content of this repo.
       
+
+     To search a specifi public repo we use: username/repo-name     cloudmaster2026/demo321
+  
+     Private Repository: Repo you choose who can see and commit. This repo need credentials for clone    			 and push  both.
+
+     Pull request (PR): On the GitHub account this action perform to get the code of lower branch 			to upper branch.   
+           
+
+          Authentication method: TOKEN and SSH-KEY method, merge conflict
 
 
 
