@@ -1,4 +1,4 @@
-     Git -> version control system which keep record of every changes performed by the user.
+#     Git -> version control system which keep record of every changes performed by the user.
          -> it works on local system(Personal computer)/computer
          -> it work CLI mode
          -> Repository = A directory which got power to handle the git actions  $git init directory-name
