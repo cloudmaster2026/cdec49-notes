@@ -1,4 +1,4 @@
-##    Git -> version control system which keep record of every changes performed by the user.
+     Git -> version control system which keep record of every changes performed by the user.
          -> it works on local system(Personal computer)/computer
          -> it work CLI mode
          -> Repository = A directory which got power to handle the git actions  $git init directory-name
@@ -55,10 +55,14 @@
    
               $ git clone  <repo url>
               $ git push remote-address <branch-name>
+              $ git pull remote-address <branch-name>    {to pull the new changes came into remote repo}
               $ git remote -v
               $ git remote add alias-name <address>    
 
-     Public Repository: A repo which will be visible to all the people on GitHub and they can read the content of 			this repo. PUll and clone. But only people you decide can change the content of this repo.
+
+              Task : what is difference between git pull and git fetch?
+
+     Public Repository: A repo which will be visible to all the people on GitHub and they can read the content  			of this repo. PUll and clone. But only people you decide can change the content of this repo.
       
 
      To search a specifi public repo we use: username/repo-name     cloudmaster2026/demo321
@@ -68,7 +72,33 @@
      Pull request (PR): On the GitHub account this action perform to get the code of lower branch 			to upper branch.   
            
 
-          Authentication method: TOKEN and SSH-KEY method, merge conflict
+          Authentication method: TOKEN and SSH-KEY method, merge conflict, git pull
+       
+           PAT: profile > settings > Developer-setting > PAT > classic > gave-it-scope
+
+           
+         KEY-BASED-AUTHENTICATION: store your public key into GitHub and use ssh url for connection of local 				   and remote repo
+
+
+   
+             What is Forking in GITHUB?
+
+
+
+
+                                            DOCKER
+      
+
+
+    
+
+
+
+
+
+
+
+
 
 
 
