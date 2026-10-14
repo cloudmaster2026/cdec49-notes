@@ -86,14 +86,56 @@
 
 
 
-                                            DOCKER
+                                               DOCKER
       
+              Applications: Architecture of applications divided into two parts --- 
+       
+
+  monolithic application -> amazon/ whole application code deploy into single server, code has very very large size, troubleshooting is very complex, and a single page error can create whole application as a issue
+  
+  
+  
+  microservice application architecture -> Each service is written into separate repository. We will create multiple small apps and will join them with each.
+  
+      www.amazon.com -> home-page 
+      www.amazon.com/mobile -> mobile page
+      www.amazon.com/mobile/iphone  -> iphone
 
 
-    
+
+ 			   Docker  - Containerisation tool 
+
+                     A self-sufficient runtime for containers.
+
+                 
+                    Containers are light weight isolated virtual machines.
+                    They use kernel of host OS.
+                    containers have limits to not go beyond.
+                    Flexible with resource, if not use release the resource.  
+
+     
+            AMI use for servers, Docker images use to create containers.
+            Docker images can be create by us or can pull from registry like 		    Dockerhub.  
+
+           Run $docker  it will list all commands to be use and there meaning
+
+             $sudo yum install docker -y
+
+             $sudo systemctl start docker
+             $sudo systemctl status docker
+             $sudo systemctl enable docker
+ 
+             $sudo docker ps 
+             $sudo docker images
+             
 
 
+to create cont: $docker run -d --name <cont-name> <image-name>
+                $docker run -d -p host-port:container-port --name <cont-name> <image-name>
 
+   host port: port no. you enable in security
+   container-port: port no. on which service is actually running
+                $ sudo docker run -d -p 90:80  --name cont2 nginx
 
 
 
