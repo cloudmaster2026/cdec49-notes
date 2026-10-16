@@ -125,8 +125,10 @@
              $sudo systemctl status docker
              $sudo systemctl enable docker
  
-             $sudo docker ps 
-             $sudo docker images
+             $sudo docker ps                 {list running containers}
+             $sudo docker ps -a               {list all containers}
+
+$sudo docker images
              
 
 
@@ -138,6 +140,17 @@ to create cont: $docker run -d --name <cont-name> <image-name>
                 $ sudo docker run -d -p 90:80  --name cont2 nginx
 
 
+             ***  by adding the local user into docker group         
+               $sudo gpasswd -a ec2-user docker
+             disconnect and connect again you server
+
+$docker cp cont1:/usr/local/apache2/htdocs .
+$docker cp hellofile cont1:/root
+
+$docker inspect <container-name>
+$docker logs <container-name>
+$docker top  <container-name>
+$docker stats <container-name>
 
 
 
