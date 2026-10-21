@@ -127,7 +127,8 @@
  
              $sudo docker ps                 {list running containers}
              $sudo docker ps -a               {list all containers}
-
+             $ docker rm -f $(docker ps -a)
+             $ docker rmi -f  $(docker images)
 $sudo docker images
              
 
@@ -153,7 +154,63 @@ $docker top  <container-name>
 $docker stats <container-name>
 
 
+                                        		 Docker images
+
+   Image - It is a file consist each and every detail for upcoming machine. It is static in form, if we make it run it become    	   container.
+                       
+   Container: It is running form of image.
+  
+   
+
+      docker image -> Docker registry   eg. DockerHub (Public registry)
+                      ECR  (AWS)
+                      ACR   
+                      GCR (Artifact Registry)
+                      Nexus
+
+        Dockerhub : Public registry store docker images
+        account create and store images
+         Username and password
+         
+               image naming:  username/imagename:tag
+          
 
 
+
+       docker run  -> image pull from dockerhub and we work on container
+       Create image with container changes   $ docker commit  
+
+       
+      
+       **** Dockerfile: write a file to create image
+
+
+
+
+
+					Docker Network
+
+        Docker networks:
+         1) Bridge (Default)
+         2) Host :
+         3) None : 
+
+
+
+10.0.0.0/24
+
+172.17.0.1/16   ->    172.17.0.2
+
+    docker network ls
+    docker inspect container-name     {to see which network container actually exist in}
+    docker network create demo         {custom  network creation}
+    docker network ls
+    docker run -d -p 82:80 --network demo nginx
+    docker network connect demo infallible_williams    {container to connect with other networks}
+    docker network disconnect demo infallible_williams
+    
+
+  -> use ping command to see connection
+  -> scope local means same vm
 
 
