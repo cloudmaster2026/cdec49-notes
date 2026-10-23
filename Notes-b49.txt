@@ -214,3 +214,82 @@ $docker stats <container-name>
   -> scope local means same vm
 
 
+
+				Docker Volume
+
+
+	Docker volume is like mount of the container data into host machine directory.
+
+                		 Type 
+    Persistent volume 			      Bind mount Volume
+ 
+   managed by docker itself		      managed by us
+   Location is Docker root dir		      anywhere any directory
+   -> /var/lib/docker/volumes
+   Accessible with sudo privilege             standard privilege
+
+  $docker volume create volume-name	       $mkdir dir1
+  $docker volume ls
+
+
+gz, bz2, xz
+
+
+
+                                  	  Dockerfile
+        A file which will guide us to create a docker image.
+                           
+       vim Dockerfile
+
+FROM   <base-image>       {5mb alpine/distrollas} ubuntu/nginx
+WORKDIR /home
+COPY    hellofile    .     {copy anyfile from host server to image}
+ADD     <url>        .  
+RUN     mkdir hello         {running a command into image}
+RUN     apt install nginx -y 
+CMD                           {running a command while creating container like starting a service it    			       is overwriteable while creating}
+ENTRYPOINT                    {running a command while creating container like starting a service} 
+EXPOSE       8050             {documentation of port no.}         
+ARG
+LABELS
+USER
+
+
+
+FROM ubuntu
+WORKDIR /opt
+COPY myfile  .
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.123/bin/apache-tomcat-9.0.123.tar.gz  .
+RUN apt update && apt install nginx -y && apt install vim -y
+CMD echo  "hello"
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
