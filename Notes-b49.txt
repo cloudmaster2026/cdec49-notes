@@ -267,6 +267,54 @@ ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
 
+FROM ubuntu
+WORKDIR /opt
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.123/bin/apache-tomcat-9.0.123.tar.gz  .
+RUN tar -xzf apache-tomcat-9.0.123.tar.gz
+RUN apt update && apt install openjdk-21-jdk -y
+COPY student.war /opt/apache-tomcat-9.0.123/webapps/
+CMD  ["/opt/apache-tomcat-9.0.123/bin/catalina.sh","run"]
+
+
+
+docker build -f my-dockerfile -t kuldeep400/tomcat:49  .
+
+
+
+
+COPY   .  .
+
+
+					
+						
+				  Docker-compose
+
+
+        compose file -> details about the containers we store into this file
+        file to create multi containers get written into yml format
+        "indentation" =  a spacing concept which describe the tree
+  
+$ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+$sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
+
+parent
+  child
+    granchild
+
+
+
+vi file.yaml
+
+father:
+  son:
+  daughter:
+    son:
+      son:
+uncle:
+  son:
+  daughter:   
 
 
 
@@ -275,20 +323,62 @@ ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
 
+vi docker-compose.yml
+
+version: "3.4"            {library of below content meaning}
+services:                 {container detail}
+  web1:
+    container_name: cont1
+    image: nginx
+  web2:
+    container_name: cont2
+    image: httpd
+    ports:
+    - 80:80
+networks:
+volumes:
+
+
+  
+
+
+docker-compose.yml
+
+
+version: "3.4"
+services:
+  web1:
+    container_name: cont1
+    image: nginx
+    networks:
+    - airtel
+  web2:
+    container_name: cont2
+    image: httpd
+    ports:
+    - 80:80
+    - 81:80
+    networks:
+    - jio
+    - airtel
+    volumes:
+    - volvo:/opt
+    - volvo:/media
+networks:
+  jio:
+  airtel:
+volumes:
+  volvo:
 
 
 
 
+ docker-compose config
+ docker-compose up -d
+ docker-compose down
 
 
-
-
-
-
-
-
-
-
+compose has property that it create resources with the prefix name of current directory
 
 
 
