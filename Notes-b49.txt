@@ -382,4 +382,97 @@ compose has property that it create resources with the prefix name of current di
 
 
 
+					   Kubernetes  (k8s)
+				 A container orchestration tool.
+
+		Container management -> Auto healing or auto scaling 
+                open-source and free
+
+                 
+
+                 Node -> servers/instances
+
+
+
+               Pod - It is the smallest unit of Deployment in K8S. Actually it is just a 		     wrapper on container.
+
+
+
+
+             kubectl
+
+    1  kubectl
+    2  kubectl get node
+    3  kubectl get pod
+    4  kubectl
+    5  kubectl run my-pod --image=nginx
+    6  kubectl get pod
+    7  kubectl get pod -o wide
+    8  curl 192.168.1.17
+    9  kubectl run pod2 --image=tomcat
+   10  kubectl get pod
+   11  kubectl get pod -o wide
+   12  curl 192.168.1.63 
+   13  curl 192.168.1.63:8080
+   14  kubectl get pod
+   15  kubectl get pod -o wide
+   16  history
+
+ 			   On-premises -> Kubeadm, Kind
+                           Elastic Kubernetes Service
+                           AKS
+                           GKE
+                           Killercoda    (2 node cluster)
+
+
+
+ 
+
+     Kubernetes Objects/Resource/Components 
+  
+    Cluster
+    Node
+    Pod
+    Namespace
+    service
+    ReplicaSet
+    Deployment
+    StatefulSet
+    HPA
+    Config and Secrets
+    PV/PVC
+    Ingress
+    
+         
+
+
+     Create eks cluster and node group from console
+     To connect and use it  ->  aws configure into local or an other ec2 instance
+     
+    
+    aws eks update-kubeconfig --region us-east-2 --name my-cluster  {to connect cluster}
+    kubectl get node
+
+
+    
+  $ kubectl get node
+  $ kubectl get pod
+  $ kubectl get pod -o wide
+  $ kubectl run pod-name  --image=<image-name>
+  $ kubectl describe pod <pod-name>
+  $ kubectl exec -it <pod-name> -- bash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
