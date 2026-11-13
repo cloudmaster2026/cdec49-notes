@@ -470,8 +470,8 @@ compose has property that it create resources with the prefix name of current di
      service identifies the pod by labels  {tag}
 
      
-     service types -> Cluster IP service  -> to expose pods inside cluster
-                      NodePort Sercvice  -> to expose pods outside cluster
+     service types -> Cluster IP service{default}  -> to expose pods inside cluster
+                      NodePort Sercvice  -> to expose pods outside cluster  ->  nodeIP:nodePort  {30000<}  3.17.6.170:31291
                       LoadBalancer Service -> to expose pod outside cluster
       
 
@@ -523,6 +523,68 @@ spec:
 
 
 kubectl apply -f pod.yaml
+
+
+
+
+
+vi svc.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-svc
+spec:
+  selector:
+    team: dev
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+
+
+
+
+                                           ReplicaSet
+  
+
+vi rs.yaml
+
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: my-rs
+spec:
+  replicas: 3
+  matchlabels:
+    selector:
+      hello: world
+  template:
+    metadata:
+      labels:
+        hello: world
+    spec:
+      containers:
+      - name: cont1
+        image: nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
