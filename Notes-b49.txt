@@ -434,7 +434,7 @@ compose has property that it create resources with the prefix name of current di
     Node
     Pod
     Namespace
-    service
+    Service
     ReplicaSet
     Deployment
     StatefulSet
@@ -463,9 +463,66 @@ compose has property that it create resources with the prefix name of current di
   $ kubectl exec -it <pod-name> -- bash
 
 
+    ### Service is a resource to expose your application into internal and external world
+
+     service give us single point of contact to reach out application pods
+     service gives us static point of contact 
+     service identifies the pod by labels  {tag}
+
+     
+     service types -> Cluster IP service  -> to expose pods inside cluster
+                      NodePort Sercvice  -> to expose pods outside cluster
+                      LoadBalancer Service -> to expose pod outside cluster
+      
 
 
 
+    Pod- a pod can have multiple containers but can have only main container other are side car    	 container.
+
+    A pod containers can have containers with same ip but they must have unique port no.
+
+
+   	manifest -> yml/yaml  -> indentation {spacing}
+        
+        camel letter  concept:  loadBalancer, apiVersion, containerPort
+
+
+  
+
+apiVersion:        library
+kind:              type of resourcve
+metadata:          detail of my resource
+spec:              speciality of my resource
+
+  
+kubectl run pod1 --image=nginx
+
+vi pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: cont1
+    image: nginx
+  - name: cont2
+    image: tomcat
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  containers:
+  - name: cont1
+    image: nginx
+  - name: cont2
+    image: tomcat
+
+
+kubectl apply -f pod.yaml
 
 
 
