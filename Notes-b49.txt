@@ -547,7 +547,7 @@ spec:
 
                                            ReplicaSet
   
-
+        It is a reource which create multiple replicas and stable their count.
 vi rs.yaml
 
 
@@ -571,15 +571,39 @@ spec:
 
 
 
+                                  Deployment
+                              
+    It is a reource which create multiple replicas and stable their count as well as help in rollout strategy.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-cont 
+        image: nginx
+      
 
 
+      ## Rollout update and rollback
 
 
+      Rollout update strategies: 1) Rolling Update: Launch before terminate  {max surge}  -  {Default strategy}
+                                 2) Recreate : terminate before launch   {max unavailability}
+                                 3) Canary Deployment: deployment in parts
+                                 4) Blue-green Deployment: zero downtime but costliest deployment
 
-
-
-
-
+                                 
 
 
 
