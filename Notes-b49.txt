@@ -438,9 +438,9 @@ compose has property that it create resources with the prefix name of current di
     ReplicaSet
     Deployment
     StatefulSet
+    ConfigMap and Secrets variables
     HPA
-    Config and Secrets
-    PV/PVC
+    PV/PVC (Persistent volume and Persistent volume claim)
     Ingress
     
          
@@ -603,19 +603,64 @@ spec:
                                  3) Canary Deployment: deployment in parts
                                  4) Blue-green Deployment: zero downtime but costliest deployment
 
+
+                                      
+                                       Application Architecture
                                  
+                    Statefull                                         Stateless
+
+            Database are statefull app                         Frontend and Backend are stateless
+
+
+ StatefulSet - create and maintain the desired no. of replicas of pod also they give unique identity to pod, it uses to create stateful applications.
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-sts
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-cont
+        image: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345"
+        - name: MYSQL_DATABASE
+          value: mydb
+
+
+
+
+                                   ConfigMap
+                A resource in k8s to store non-sensitive variables.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-cm 
+data:
+  dbname: mydb
+  dbname2: helldb
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+                                    Secrets
+                A resource in k8s to store sensitive variables.
+                
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret 
+data:
+  password: 
