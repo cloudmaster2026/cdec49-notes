@@ -592,7 +592,13 @@ spec:
       containers:
       - name: my-cont 
         image: nginx
-      
+        resources:
+          limits:
+            mem: 50Mi
+            cpu: 15m
+          requests:
+            mem: 10Mi
+            cpu: 10m  
 
 
       ## Rollout update and rollback
@@ -633,9 +639,15 @@ spec:
         image: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "12345"
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: password
         - name: MYSQL_DATABASE
-          value: mydb
+          valueFrom:
+            configMapKeyRef:
+              name: my-cm
+              key: dbname
 
 
 
@@ -649,18 +661,46 @@ metadata:
   name: my-cm 
 data:
   dbname: mydb
-  dbname2: helldb
+  
+  
 
 
 
-
+$ echo -n kuldeep | base64
+$ echo a3VsZGVlcA== | base64 -d
 
                                     Secrets
-                A resource in k8s to store sensitive variables.
+               A resource in k8s to store sensitive variables.
                 
 apiVersion: v1
 kind: Secret
 metadata:
   name: my-secret 
 data:
-  password: 
+  password: MTIzNDU=
+
+
+                                         HPA
+                              Horizontal Pod Autoscalling 
+
+            This resource help us to scale the pod automatically based on traffic.
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-deploy
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  
