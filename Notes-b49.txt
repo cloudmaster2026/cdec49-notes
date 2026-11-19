@@ -704,3 +704,47 @@ spec:
         type: Utilization
         averageUtilization: 50
   
+
+                                       PV & PVC
+
+                Persistent Volume and Persistent Volume Claim    
+
+        storage ->  /mnt                          
+
+
+        vi  pv.yaml
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+  labels:
+    team: dev 
+spec:
+  capacity: 
+    storage: 500Mi
+  persistentVolumeReclaimPolicy: Retain
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: manual
+  hostPath:
+    path: "/mnt"
+
+
+
+
+vi pvc.yaml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+  labels:
+    team: dev
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 500Mi 
