@@ -747,4 +747,46 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 500Mi 
+      storage: 500Mi
+  volumeName: my-pv
+  storageClassName: manual
+
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-sts
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      volumes:
+      - name: volvo
+        persistentVolumeClaim: 
+          claimName: my-pvc
+      containers:
+      - name: my-cont
+        image: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: password
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: my-cm
+              key: dbname
+        volumeMounts:
+        - name: volvo
+          mountPath: /opt
+      
+          
+        
