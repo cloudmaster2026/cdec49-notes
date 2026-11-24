@@ -790,3 +790,43 @@ spec:
       
           
         
+
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.14.1/deploy/static/provider/cloud/deploy.yaml
+
+
+      
+
+      vi ingress.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotation: 
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: cbz.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-nginx
+      - path: /httpd
+        pathType: Prefix
+        backend:
+          service:
+            name: my-httpd
+      - path: /recordings
+        pathType: Prefix
+        backend:
+          service:
+            name: recording-service
+
+
+
+    
+      
+
