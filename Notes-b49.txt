@@ -829,5 +829,42 @@ spec:
 
 
     
+                                         Terraform
+                                 Infrastructure as a Code
+
       
+Scripting to create the Infrastructure.
+
+1) Complexity in resource management
+2) Documentation
+3) Reapplying/Recreation the resource
+
+
+    Project1 -  VPC, EC2, S3, Lambda, CloudWatch, IAM Role     -> 1 month 
+    Project2 -  VPC, Lambda, s3, cloudwatch, RDS, IAM          ->  1 month 
+    Project3 -  VPC, EC2, s3, Cw, RDS, Lambda, IAM, Secret Manager ->1.5 month 
+
+    Terraform scripts: scripts for all resource write down ->  apply  -> your resources are ready
+    -> 2 month   (for Project1)
+    -> apply the same code for  project2   -> 5 days  -> Half an hour resource creation done
+  
+
+-> time saving 
+-> Documentation atumation  {.tfstate}
+-> Reusabality easy
+-> less complexity  -> terraform destroy
+
+
+CLI tool
+file editor
+Cloud account
+                  
+
+steps:  Install Terraform
+        vim file.tf
+        
+        terraform lifecycle -> terraform init  -- to initialize a directory into terraform directory
+                               terraform plan  -- it tells what resources are going to be create
+                               terraform apply  -- to apply resources
+                               terraform destroy -- to delete resources
 
