@@ -868,3 +868,56 @@ steps:  Install Terraform
                                terraform apply  -- to apply resources
                                terraform destroy -- to delete resources
 
+
+key = value
+
+data types
+
+string = "kuldeep123"   "abc"
+number =  4565
+boolean = true   false
+list = ["apple","banana","kiwi","apple","kiwi"]
+set = {"apple","banana","kiwi","apple"}
+
+name = ["kuldeep","balaji","aditya","kuldeep","abhijit"]
+
+aws_instance
+aws_security_group
+instance_type
+
+
+Blocks: Blocks are space in which we put the infra detail. {}
+
+Types of Block:
+ 
+provider block {} -> it tells machine which cloud provider to be use eg-  aws, gcp, azure
+resource {}  -> what resource to be create by the script
+variable {}
+output {}
+data {}
+module {}
+terraform {}
+
+
+
+vi provider.tf
+
+provider "aws" {
+  region = "ap-south-1"
+} 
+
+
+vi instance.tf
+
+block_type "resource_type" "block_name" {
+ details 
+}
+
+vi instance.tf
+
+resource "aws_instance" "block1" {
+  ami = "ami-0ff266486ab341a51"
+  instance_type = "t3.micro"
+  key_name  = "tf-key"
+  security_groups = ["default"]
+}
